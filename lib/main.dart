@@ -5,7 +5,9 @@ import 'package:geo_attendance_system/src/services/geofencing.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     GeoFencing(
       service: GeoFencingService(),
