@@ -26,13 +26,13 @@ class GeoFencing extends InheritedWidget {
 class GeoFencingService with ChangeNotifier {
   GeofenceStatus geofenceStatus = GeofenceStatus.init;
 
-  void startGeofencing(Office office) {
+  void startGeofencing() {
     EasyGeofencing.stopGeofenceService();
 
     EasyGeofencing.startGeofenceService(
-      pointedLatitude: office.latitude.toString(),
-      pointedLongitude: office.longitude.toString(),
-      radiusMeter: office.radius.toString(),
+      pointedLatitude: "28.644871081269685",
+      pointedLongitude: "77.32609798104342",
+      radiusMeter: 50.toString(),
       eventPeriodInSeconds: 5,
     );
 

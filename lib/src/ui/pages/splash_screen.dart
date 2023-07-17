@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:geo_attendance_system/src/services/authentication.dart';
 import 'package:geo_attendance_system/src/ui/constants/colors.dart';
@@ -25,7 +24,6 @@ class SplashScreenWidget extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreenWidget> {
   AuthStatus authStatus = AuthStatus.NOT_DETERMINED;
-
 
   void initState() {
     super.initState();

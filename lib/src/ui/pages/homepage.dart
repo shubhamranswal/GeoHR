@@ -38,17 +38,8 @@ class _HomePageState extends State<HomePage>
       result = await Permission.location.request();
       switch (result) {
         case PermissionStatus.granted:
-          officeDatabase.getOfficeBasedOnUID(widget.user.uid).then((office) {
-            print(office.latitude);
-
-            GeoFencing.of(context).service.startGeofencing(office);
-
-            setState(() {
-              geoFenceActive = true;
-              allottedOffice = office;
-            });
-          });
-
+          GeoFencing.of(context).service.startGeofencing();
+          geoFenceActive = true;
           break;
         case PermissionStatus.denied:
           print("DENIED");

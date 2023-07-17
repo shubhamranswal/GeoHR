@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geo_attendance_system/src/services/fetch_IMEI.dart';
 import 'package:geo_attendance_system/src/ui/constants/colors.dart';
 import 'package:geo_attendance_system/src/ui/pages/homepage.dart';
-import 'package:geo_attendance_system/src/ui/widgets/Info_dialog_box.dart';
 import 'package:geo_attendance_system/src/ui/widgets/loader_dialog.dart';
 
 import '../../services/authentication.dart';
@@ -194,19 +193,6 @@ class _LoginState extends State<Login> {
         child: Stack(
           fit: StackFit.expand,
           children: <Widget>[
-            /* Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(top: 20.0),
-                  child: Image.asset("assets/image_01.png"),
-                ),
-                Expanded(
-                  child: Container(),
-                ),
-                Image.asset("assets/image_02.png")
-              ],
-            ),*/
             SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.only(left: 28.0, right: 28.0, top: 60.0),
@@ -229,20 +215,12 @@ class _LoginState extends State<Login> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
-                              Text("GeoFlix",
+                              Text("GeoHR",
                                   style: TextStyle(
                                       fontFamily: "Poppins-Bold",
                                       color: appbarcolor,
                                       fontSize: ScreenUtil().setSp(90),
                                       letterSpacing: .6,
-                                      fontWeight: FontWeight.bold)),
-                              Text("Geo-Attendance and HR Management System",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontFamily: "Poppins-Bold",
-                                      color: Colors.black54,
-                                      fontSize: ScreenUtil().setSp(25),
-                                      letterSpacing: 0.2,
                                       fontWeight: FontWeight.bold)),
                             ],
                           ),
@@ -250,7 +228,7 @@ class _LoginState extends State<Login> {
                       ],
                     ),
                     SizedBox(
-                      height: ScreenUtil().setHeight(90),
+                      height: ScreenUtil().setHeight(40),
                     ),
                     formCard(),
                     SizedBox(height: ScreenUtil().setHeight(40)),
@@ -356,7 +334,6 @@ class _LoginState extends State<Login> {
   Widget formCard() {
     return new Container(
       width: double.infinity,
-      height: 260,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8.0),

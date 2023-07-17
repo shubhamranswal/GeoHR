@@ -2,11 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:geo_attendance_system/src/ui/constants/colors.dart';
 import 'package:geo_attendance_system/src/ui/widgets/loader_dialog.dart';
-import 'package:grouped_buttons/grouped_buttons.dart';
-
 import 'leave_status.dart';
 
 class LeaveApplicationWidget extends StatefulWidget {
@@ -222,181 +219,7 @@ class LeaveApplicationWidgetState extends State<LeaveApplicationWidget>
                                       MainAxisAlignment.spaceAround,
                                   children: <Widget>[
                                     Text('From'),
-                                    Container(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 5, 0, 20),
-                                        child: ElevatedButton(
-                                          style: ButtonStyle(
-                                            shape: MaterialStateProperty
-                                                .resolveWith(
-                                              (states) =>
-                                                  RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                              ),
-                                            ),
-                                            elevation: MaterialStateProperty
-                                                .resolveWith((states) => 4),
-                                            backgroundColor:
-                                                MaterialStateProperty
-                                                    .resolveWith((states) =>
-                                                        Colors.white),
-                                          ),
-                                          onPressed: () {
-                                            DatePicker.showDatePicker(context,
-                                                theme: DatePickerTheme(
-                                                  containerHeight: 250.0,
-                                                ),
-                                                showTitleActions: true,
-                                                minTime: DateTime(date.year,
-                                                    date.month, date.day),
-                                                maxTime: DateTime(2050, 12, 31),
-                                                onConfirm: (date) {
-                                              print('confirm $date');
-                                              _fromdate =
-                                                  getFormattedDate(date);
-                                              setState(() {
-                                                _fromDateInt = date;
-
-                                                if (_todate != null) {
-                                                  setState(() {
-                                                    int _difference = _toDateInt
-                                                            ?.difference(
-                                                                _fromDateInt ??
-                                                                    _toDateInt!)
-                                                            .inDays ??
-                                                        0;
-                                                    _difference += 1;
-                                                    if (_difference <= 0)
-                                                      leavesCount =
-                                                          "Invalid Dates";
-                                                    else
-                                                      leavesCount = _difference
-                                                          .toString();
-                                                  });
-                                                }
-                                              });
-                                            },
-                                                currentTime: DateTime.now(),
-                                                locale: LocaleType.en);
-                                          },
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            height: 50.0,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: <Widget>[
-                                                Row(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Row(
-                                                        children: <Widget>[
-                                                          Text(
-                                                            "$_fromdate",
-                                                            style: TextStyle(
-                                                              color:
-                                                                  dashBoardColor,
-                                                              fontSize: 16.0,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    )
-                                                  ],
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        )),
                                     Text('To'),
-                                    Container(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 5, 0, 20),
-                                        child: ElevatedButton(
-                                          style: ButtonStyle(
-                                            shape: MaterialStateProperty
-                                                .resolveWith(
-                                              (states) =>
-                                                  RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                              ),
-                                            ),
-                                            elevation: MaterialStateProperty
-                                                .resolveWith((states) => 4),
-                                            backgroundColor:
-                                                MaterialStateProperty
-                                                    .resolveWith((states) =>
-                                                        Colors.white),
-                                          ),
-                                          onPressed: () {
-                                            DatePicker.showDatePicker(context,
-                                                theme: DatePickerTheme(
-                                                  containerHeight: 250.0,
-                                                ),
-                                                showTitleActions: true,
-                                                minTime: DateTime(date.year,
-                                                    date.month, date.day),
-                                                maxTime: DateTime(2022, 12, 31),
-                                                onConfirm: (date) {
-                                              print('confirm $date');
-                                              _todate = getFormattedDate(date);
-                                              setState(() {
-                                                _toDateInt = date;
-
-                                                if (_fromDateInt != null) {
-                                                  setState(() {
-                                                    int _difference = _toDateInt
-                                                            ?.difference(
-                                                                _fromDateInt ??
-                                                                    _toDateInt!)
-                                                            .inDays ??
-                                                        0;
-                                                    _difference += 1;
-                                                    if (_difference <= 0)
-                                                      leavesCount =
-                                                          "Invalid Dates";
-                                                    else
-                                                      leavesCount = _difference
-                                                          .toString();
-                                                  });
-                                                }
-                                              });
-                                            },
-                                                currentTime: DateTime.now(),
-                                                locale: LocaleType.en);
-                                          },
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            height: 50.0,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: <Widget>[
-                                                Row(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Row(
-                                                        children: <Widget>[
-                                                          Text(
-                                                            "$_todate",
-                                                            style: TextStyle(
-                                                                color:
-                                                                    dashBoardColor,
-                                                                fontSize: 16.0),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    )
-                                                  ],
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        )),
                                   ],
                                 ),
                                 Container(
@@ -407,32 +230,6 @@ class LeaveApplicationWidgetState extends State<LeaveApplicationWidget>
                                   padding:
                                       const EdgeInsets.fromLTRB(0, 20, 0, 20),
                                   child: Text('Type of leave'),
-                                ),
-                                CheckboxGroup(
-                                  labels: <String>[
-                                    leaveType[0],
-                                    leaveType[1],
-                                    leaveType[2],
-                                  ],
-                                  checked: _checked,
-                                  activeColor: dashBoardColor,
-                                  onChange: (bool isChecked, String label,
-                                      int index) {
-                                    print(
-                                        "isChecked: $isChecked   label: $label  index: $index");
-                                    leaveIndex = index;
-                                  },
-                                  onSelected: (selected) => setState(() {
-                                    isSelected = true;
-                                    if (selected.length > 1) {
-                                      selected.removeAt(0);
-                                      print(
-                                          'selected length  ${selected.length}');
-                                    } else {
-                                      print("only one");
-                                    }
-                                    _checked = selected;
-                                  }),
                                 ),
                                 TextField(
                                   autofocus: false,
